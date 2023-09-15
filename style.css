@@ -1,0 +1,11 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(18, 18, 48);
+}
+.title{
+    font-size: xx-large;
+    color: white;
+    font-family: "oswald";
+    text-align: center;
+}
