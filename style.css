@@ -2,10 +2,85 @@ body{
     margin: 0;
     padding: 0;
     background-color: rgb(18, 18, 48);
+    color: white;
+    font-family: "oswald";
 }
 .title{
     font-size: xx-large;
-    color: white;
-    font-family: "oswald";
+    
     text-align: center;
 }
+.mainArea{
+    height: 300px;
+    width: 600px;
+    margin: auto;
+    border-radius: 300px 300px 0 0;
+    background-color: wheat;
+    position: relative;
+    z-index: -3;
+}
+.scoresection{
+    height: 600px;
+    width: 600px;
+    transform: rotate(0deg);
+    transform-origin: center;
+}
+.twopoint{
+    height: 600px;
+    width: 600px;
+    border-radius: 300px 300px 300px 300px;
+    background-image: conic-gradient(from 347.5deg,  rgb(201, 201, 47) 25deg, transparent 25deg, transparent 180deg,rgb(201, 201, 47) 180deg, rgb(201, 201, 47) 205deg, transparent 205deg);
+    position: absolute;
+  }
+  .threepoint{
+    height: 600px;
+    width: 600px;
+    border-radius: 300px 300px 300px 300px;
+    background-image: conic-gradient(from 352.5deg,  rgb(255, 78, 78) 15deg, transparent 15deg, transparent 180deg,rgb(255, 78, 78) 180deg, rgb(255, 78, 78) 195deg, transparent 195deg);
+    position: absolute;
+  }
+  .fourpoint{
+    height: 600px;
+    width: 600px;
+    border-radius: 300px 300px 300px 300px;
+    background-image: conic-gradient(from 357.5deg,  rgb(122, 122, 255) 5deg, transparent 5deg, transparent 180deg,rgb(122, 122, 255) 180deg, rgb(122, 122, 255) 185deg, transparent 185deg);
+    position: absolute;
+  }
+  .blocker{
+    height: 610px;
+    width: 610px;
+    border-radius: 305px 305px 305px 305px;
+    top: -5px;
+    right: -5px;
+    background-image: conic-gradient(from 90deg,  rgb(18, 18, 48) 180deg, transparent 180deg);
+    position: absolute;
+  }
+  .hider{
+    height: 610px;
+    width: 610px;
+    border-radius: 305px 305px 305px 305px;
+    top: -5px;
+    right: -5px;
+    background-image: conic-gradient(from 270deg,  rgb(158, 158, 255) 180deg, transparent 180deg);
+    position: absolute;
+  }
+  .pointer{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px 50px 50px 50px;
+    top: 250px;
+    right: 250px;
+    background-color: rgb(255, 0, 0);
+    position: absolute;
+    filter: drop-shadow(0px 0px 4px #000000);
+    transform: rotate(-30deg);
+  }
+  .line{
+    position: absolute;
+    bottom: 50px;
+    left: 45px;
+    height: 265px;
+    width: 7px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 5px;
+  }
