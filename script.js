@@ -86,6 +86,14 @@ const promptList = [
 ]
 
 const newPromptButton = document.getElementById("newprompt");
+const spinButton = document.getElementById("spinrange");
+const hideButton = document.getElementById("hide");
+
+const spinner = document.querySelector(".scoresection");
+const hider = document.querySelector(".hider");
+const pointer = document.querySelector(".pointer");
+const main = document.querySelector(".mainArea");
+let hidden = true;
 
 const leftPrompt = document.getElementById("leftside");
 const rightPrompt = document.getElementById("rightside");
@@ -94,4 +102,24 @@ newPromptButton.addEventListener("click", ()=>{
     const prompt = promptList[Math.floor(Math.random() * promptList.length)]
     leftPrompt.textContent = prompt[0];
     rightPrompt.textContent = prompt[1];
+});
+
+spinButton.addEventListener("click", ()=>{
+    const rotate = Math.floor(Math.random() * 181)-90;
+    spinner.style.transform = `rotate(${rotate}deg)`;
+});
+
+hideButton.addEventListener("click", ()=>{
+    hidden = !hidden;
+    hider.hidden = hidden;
+    spinButton.disabled = !hidden;
+    newPromptButton.disabled = !hidden;
+});
+
+hider.addEventListener("click", (e)=>{
+    const pointcentX = pointer.offsetLeft + pointer.offsetWidth / 2;
+    const pointcentY = pointer.offsetTop + pointer.offsetHeight / 2;
+    const angle = Math.atan2(e.clientY-main.offsetTop -pointcentY, e.clientX-main.offsetLeft-pointcentX);
+    console.log((angle*180/Math.PI)+90)
+    pointer.style.transform = `rotate(${(angle*180/Math.PI)+90}deg)`;
 });

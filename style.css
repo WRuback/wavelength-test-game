@@ -17,13 +17,14 @@ body{
     border-radius: 45vw 45vw 0 0;
     background-color: wheat;
     position: relative;
-    z-index: -3;
+
+    overflow: hidden;
 }
 .scoresection{
     height: 90vw;
     width: 90vw;
-    transform: rotate(0deg);
     transform-origin: center;
+    
 }
 .twopoint{
     height: 90vw;
@@ -64,6 +65,9 @@ body{
     background-image: conic-gradient(from 270deg,  rgb(158, 158, 255) 180deg, transparent 180deg);
     position: absolute;
   }
+  .hider:hover{
+    background-image: conic-gradient(from 270deg,  rgb(213, 213, 255) 180deg, transparent 180deg);
+  }
   .pointer{
     height: 15vw;
     width: 15vw;
@@ -73,7 +77,7 @@ body{
     background-color: rgb(255, 0, 0);
     position: absolute;
     filter: drop-shadow(0px 0px 4px #000000);
-    transform: rotate(-30deg);
+    pointer-events: none;
   }
   .line{
     position: absolute;
@@ -92,11 +96,15 @@ body{
     text-align: center;
   }
   .buttoncontainer{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5vw;
   }
   .buttoncontainer > button{
     padding: 10px;
     background-color: aqua;
     border-radius: 5px;
     border: none;
+    display: block;
   }
