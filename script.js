@@ -82,11 +82,94 @@ const promptList = [
     ["Ugly Man", "Beautiful Man"],
     ["Easy to Kill", "Hard to Kill"],
     ["Fad", "Classic"],
-    ["Disgusting cereal", "Delicious cereal"]
+    ["Disgusting cereal", "Delicious cereal"],
+    ["Ineffective", "Effective"],
+    ["Smelly in a bad way", "Smelly in a good way"],
+    ["Basic", "Hipster"],
+    ["Not a Sandwich", "A Sandwich"],
+    ["Has a bad reputation", "Has a good reputation"],
+    ["Friend", "Enemy"],
+    ["Nature", "Nurture"],
+    ["Square", "Round"],
+    ["Scary Animal", "Nice Animal"],
+    ["Bad Music", "Good Music"],
+    ["Useless", "Useful"],
+    ["Boring Hobby", "Interesting Hobby"],
+    ["Rough", "Smooth"],
+    ["Round", "Pointy"],
+    ["Underrated thing to own", "Overrated thing to own"],
+    ["Underrated letter of the alphabet", "Overrated letter of the alphabet"],
+    ["Traditionally masculine", "Traditionally feminine"],
+    ["Comedy", "Drama"],
+    ["Culturally Significant", "Culturally Insignificant"],
+    ["Unsexy Emoji", "Sexy Emoji"],
+    ["Useless Major", "Useful Major"],
+    ["Underrated Actor", "Overrated Actor"],
+    ["Tastes Bad", "Tastes Good"],
+    ["Smells Bad", "Smells Good"],
+    ["The Light Side of the Force", "The Dark Side of the Force"],
+    ["Underrated thing to do", "Overrated thing to do"],
+    ["Worst Athlete of all time", "Greatest Athlete of all time"],
+    ["Failure", "Masterpiece"],
+    ["Gryffindor", "Slytherin"],
+    ["Bad Man", "Good Man"],
+    ["Hairless", "Hairy"],
+    ["Normal Pet", "Exotic Pet"],
+    ["Book was better", "Movie was better"],
+    ["Ugly", "Beautiful"],
+    ["Straight", "Curvy"],
+    ["80s", "90s"],
+    ["Underpaid", "Overpaid"],
+    ["Underrated Skill", " Overrated Skill"],
+    ["Sad Song", "Happy Song"],
+    ["Geek", "Dork"],
+    ["Worst Day of the year", "Best Day of the year"],
+    ["Cat Person", "Dog Person"],
+    ["Dry Food", "Wet Food"],
+    ["Requires Luck", "Requires Skill"],
+    ["Easy to Spell", "Hard to Spell"],
+    ["Sad Movie", "Happy Movie"],
+    ["Hard to Pronounce", "Easy to Pronounce"],
+    ["Job", "Career"],
+    ["Divided", "Whole"],
+    ["Soft", "Hard"],
+    ["Normal", "Weird"],
+    ["Inessential", "Essential"],
+    ["Liberal", "Conservative"],
+    ["Difficult to Use", "Easy to Use"],
+    ["Easy Subject", "Hard Subject"],
+    ["Least Evil Company", "Most Evil Company"],
+    ["Action Movie", "Adventure Movie"],
+    ["Unsexy Animal", "Sexy Animal"],
+    ["Hard to do", "Easy to do"],
+    ["Underated Movie", "Overrated Movie"],
+    ["Mildly Addictive", "Highly Addictive"],
+    ["Low Calorie", "High Calorie"],
+    ["Dangerous Job", "Safe Job"],
+    ["Short lived", "Longed lived"],
+    ["Hard to remember", "Easy to remember"],
+    ["For Kids", "For Adults"],
+    ["Underrated Musician", "Overrated Musician"],
+    ["Artisanal", "Mass Produced"],
+    ["Cheap", "Expensive"],
+    ["Movie", "Film"],
+    ["Unbelievable", "Believable"],
+    ["Flavorless", "Flavorful"],
+    ["Messy Food", "Clean Food"],
+    ["Mental Activity", "Physical Activity"],
+    ["Temporary", "Permanent"],
+    ["Untalented", "Talented"],
+    ["Unfashionable", "Fashionable"],
+    ["Uncool", "Cool"],
+    ["Round Animal", "Pointy Animal"],
+    ["Bad Pizza Topping", "Good Pizza Topping"],
+    ["Hard to Find", "Easy to Find"],
+    ["Unreliable", "Reliable"],
+    ["Useless Body Part", "Useful Body Part"],
+    ["Weak", "Strong"]
 ]
 
 const newPromptButton = document.getElementById("newprompt");
-const spinButton = document.getElementById("spinrange");
 const hideButton = document.getElementById("hide");
 
 const spinner = document.querySelector(".scoresection");
@@ -100,19 +183,17 @@ const rightPrompt = document.getElementById("rightside");
 
 newPromptButton.addEventListener("click", ()=>{
     const prompt = promptList[Math.floor(Math.random() * promptList.length)]
+    const rotate = Math.floor(Math.random() * 181)-90;
+
     leftPrompt.textContent = prompt[0];
     rightPrompt.textContent = prompt[1];
-});
-
-spinButton.addEventListener("click", ()=>{
-    const rotate = Math.floor(Math.random() * 181)-90;
     spinner.style.transform = `rotate(${rotate}deg)`;
+    pointer.style.transform = `rotate(0deg)`;
 });
 
 hideButton.addEventListener("click", ()=>{
     hidden = !hidden;
     hider.hidden = hidden;
-    spinButton.disabled = !hidden;
     newPromptButton.disabled = !hidden;
 });
 
