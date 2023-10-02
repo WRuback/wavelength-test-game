@@ -1,3 +1,13 @@
+:root{
+  --rotateto : rotate(0deg);
+  --rotatefrom: rotate(360deg);
+}
+
+@keyframes spin {
+  from {transform: var(--rotatefrom);}
+  to {transform: var(--rotateto);}
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -120,4 +130,9 @@ body{
   }
   .gamelink{
     color: aqua;
+  }
+  .spin{
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0, 0, 0.38, 1.0);
   }

@@ -172,6 +172,8 @@ const promptList = [
 const newPromptButton = document.getElementById("newprompt");
 const hideButton = document.getElementById("hide");
 
+const root = document.documentElement;
+
 const spinner = document.querySelector(".scoresection");
 const hider = document.querySelector(".hider");
 const pointer = document.querySelector(".pointer");
@@ -180,15 +182,27 @@ let hidden = true;
 
 const leftPrompt = document.getElementById("leftside");
 const rightPrompt = document.getElementById("rightside");
+let rotate = 0;
 
 newPromptButton.addEventListener("click", ()=>{
+    console.log(rotate)
     const prompt = promptList[Math.floor(Math.random() * promptList.length)]
-    const rotate = Math.floor(Math.random() * 181)-90;
-
+    let curRotation = `rotate(${rotate+540}deg)`;
+    rotate = Math.floor(Math.random() * 181)-90;
+    
     leftPrompt.textContent = prompt[0];
     rightPrompt.textContent = prompt[1];
-    spinner.style.transform = `rotate(${rotate}deg)`;
+    
+    let rotation = `rotate(${rotate}deg)`;
+    spinner.style.transform = rotation;
     pointer.style.transform = `rotate(0deg)`;
+    
+    root.style.setProperty('--rotateto', rotation);
+    root.style.setProperty('--rotatefrom', curRotation)
+    
+    spinner.classList.remove("spin");
+    void spinner.offsetWidth;
+    spinner.classList.add("spin");
 });
 
 hideButton.addEventListener("click", ()=>{
