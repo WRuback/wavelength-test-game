@@ -184,8 +184,11 @@ const leftPrompt = document.getElementById("leftside");
 const rightPrompt = document.getElementById("rightside");
 let rotate = 0;
 
+const backgroundStars = document.getElementById("backgroundstars") ;
+const content = backgroundStars.getContext('2d');
+let timingResize;
+
 newPromptButton.addEventListener("click", ()=>{
-    console.log(rotate)
     const prompt = promptList[Math.floor(Math.random() * promptList.length)]
     let curRotation = `rotate(${rotate+540}deg)`;
     rotate = Math.floor(Math.random() * 181)-90;
@@ -215,6 +218,26 @@ hider.addEventListener("click", (e)=>{
     const pointcentX = pointer.offsetLeft + pointer.offsetWidth / 2;
     const pointcentY = pointer.offsetTop + pointer.offsetHeight / 2;
     const angle = Math.atan2(e.clientY-main.offsetTop -pointcentY, e.clientX-main.offsetLeft-pointcentX);
-    console.log((angle*180/Math.PI)+90)
     pointer.style.transform = `rotate(${(angle*180/Math.PI)+90}deg)`;
 });
+
+function backgroundDraw() {
+    backgroundStars.width = window.innerWidth;
+    backgroundStars.height = window.innerHeight;
+    content.strokeStyle = 'rgba(0, 255, 255, 0.3)';
+    content.lineWidth = '1';
+    const amount = window.innerWidth*window.innerHeight/1000;
+    for(let i = 0; i < amount; i++){
+        content.strokeStyle = `rgba(0, ${130+(Math.random()*125)}, ${130+(Math.random()*125)}, ${Math.random()*0.3})`;
+        content.beginPath();
+        content.arc(Math.random()*window.innerWidth, Math.random()*window.innerHeight, 20, 0,2*Math.PI);
+        content.stroke();
+    }
+};
+
+window.addEventListener("resize",()=>{
+    clearTimeout(timingResize);
+    timingResize = setTimeout(backgroundDraw, 100);
+},false);
+
+backgroundDraw();
