@@ -225,10 +225,10 @@ function backgroundDraw() {
     backgroundStars.width = window.innerWidth;
     backgroundStars.height = window.innerHeight;
     content.strokeStyle = 'rgba(0, 255, 255, 0.3)';
-    content.lineWidth = '1';
+    content.lineWidth = '2';
     const amount = window.innerWidth*window.innerHeight/1000;
     for(let i = 0; i < amount; i++){
-        content.strokeStyle = `rgba(0, ${130+(Math.random()*125)}, ${130+(Math.random()*125)}, ${Math.random()*0.3})`;
+        content.strokeStyle = `rgba(0, ${130+(Math.random()*125)}, ${130+(Math.random()*125)}, ${Math.random()*0.2})`;
         content.beginPath();
         content.arc(Math.random()*window.innerWidth, Math.random()*window.innerHeight, 20, 0,2*Math.PI);
         content.stroke();
