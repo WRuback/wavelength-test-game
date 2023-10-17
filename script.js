@@ -182,43 +182,54 @@ let hidden = true;
 
 const leftPrompt = document.getElementById("leftside");
 const rightPrompt = document.getElementById("rightside");
+const rulesDisplay = document.getElementById("rulesDisplay");
 let rotate = 0;
 
-const backgroundStars = document.getElementById("backgroundstars") ;
+const backgroundStars = document.getElementById("backgroundstars");
 const content = backgroundStars.getContext('2d');
 let timingResize;
 
-newPromptButton.addEventListener("click", ()=>{
+newPromptButton.addEventListener("click", () => {
     const prompt = promptList[Math.floor(Math.random() * promptList.length)]
-    let curRotation = `rotate(${rotate+540}deg)`;
-    rotate = Math.floor(Math.random() * 181)-90;
-    
+    let curRotation = `rotate(${rotate + 540}deg)`;
+    rotate = Math.floor(Math.random() * 181) - 90;
+
     leftPrompt.textContent = prompt[0];
     rightPrompt.textContent = prompt[1];
-    
+
     let rotation = `rotate(${rotate}deg)`;
     spinner.style.transform = rotation;
     pointer.style.transform = `rotate(0deg)`;
-    
+
     root.style.setProperty('--rotateto', rotation);
     root.style.setProperty('--rotatefrom', curRotation)
-    
+
     spinner.classList.remove("spin");
     void spinner.offsetWidth;
     spinner.classList.add("spin");
+
+    rulesDisplay.textContent = "Click Respin to select a new prompt, or hit 'hide spinner' to start the game."
 });
 
-hideButton.addEventListener("click", ()=>{
+hideButton.addEventListener("click", () => {
     hidden = !hidden;
     hider.hidden = hidden;
-    newPromptButton.disabled = !hidden;
+    if (!hidden) {
+        newPromptButton.classList.add("hide");
+        hideButton.innerText = "Reveal the Spinner";
+        rulesDisplay.textContent = "Click on the spinner to select where the wavelength is. Then hit 'Reveal' to see if you got it!"
+    } else {
+        newPromptButton.classList.remove("hide");
+        hideButton.innerText = "Hide the Spinner";
+        rulesDisplay.textContent = "Click Respin to select a new prompt, or hit 'hide spinner' to start the game."
+    }
 });
 
-hider.addEventListener("click", (e)=>{
+hider.addEventListener("click", (e) => {
     const pointcentX = pointer.offsetLeft + pointer.offsetWidth / 2;
     const pointcentY = pointer.offsetTop + pointer.offsetHeight / 2;
-    const angle = Math.atan2(e.clientY-main.offsetTop -pointcentY, e.clientX-main.offsetLeft-pointcentX);
-    pointer.style.transform = `rotate(${(angle*180/Math.PI)+90}deg)`;
+    const angle = Math.atan2(e.clientY - main.offsetTop - pointcentY, e.clientX - main.offsetLeft - pointcentX);
+    pointer.style.transform = `rotate(${(angle * 180 / Math.PI) + 90}deg)`;
 });
 
 function backgroundDraw() {
@@ -226,18 +237,18 @@ function backgroundDraw() {
     backgroundStars.height = window.innerHeight;
     content.strokeStyle = 'rgba(0, 255, 255, 0.3)';
     content.lineWidth = '2';
-    const amount = window.innerWidth*window.innerHeight/1000;
-    for(let i = 0; i < amount; i++){
-        content.strokeStyle = `rgba(0, ${130+(Math.random()*125)}, ${130+(Math.random()*125)}, ${Math.random()*0.2})`;
+    const amount = window.innerWidth * window.innerHeight / 1000;
+    for (let i = 0; i < amount; i++) {
+        content.strokeStyle = `rgba(0, ${130 + (Math.random() * 125)}, ${130 + (Math.random() * 125)}, ${Math.random() * 0.2})`;
         content.beginPath();
-        content.arc(Math.random()*window.innerWidth, Math.random()*window.innerHeight, 20, 0,2*Math.PI);
+        content.arc(Math.random() * window.innerWidth, Math.random() * window.innerHeight, 20, 0, 2 * Math.PI);
         content.stroke();
     }
 };
 
-window.addEventListener("resize",()=>{
+window.addEventListener("resize", () => {
     clearTimeout(timingResize);
     timingResize = setTimeout(backgroundDraw, 100);
-},false);
+}, false);
 
 backgroundDraw();

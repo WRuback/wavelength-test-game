@@ -126,18 +126,27 @@ body{
     padding: 10px;
     background-color: aqua;
     border-radius: 5px;
+    font-size: 1em;
+    font-family: "oswald";
     border: none;
     display: block;
   }
   .gamelink{
     color: aqua;
   }
+  .hide {
+    display: none !important; 
+  }
   .spin{
     animation-name: spin;
     animation-duration: 1s;
     animation-timing-function: cubic-bezier(0, 0, 0.38, 1.0);
   }
-
+  .Rules > p{
+    text-align: center;
+    padding: min(5vw, 40px);
+    margin: 0;
+  }
   #backgroundstars{
     z-index: -200;
     position: fixed;
